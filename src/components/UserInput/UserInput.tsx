@@ -21,6 +21,7 @@ export default function UserInput({
             name="initialInvestment"
             value={formData.initialInvestment}
             onChange={handleInputChange}
+            data-cy="input-initial-investment"
           />
         </p>
 
@@ -32,6 +33,7 @@ export default function UserInput({
             name="annualInvestment"
             value={formData.annualInvestment}
             onChange={handleInputChange}
+            data-cy="input-annual-investment"
           />
         </p>
       </div>
@@ -45,6 +47,7 @@ export default function UserInput({
             name="expectedReturn"
             value={formData.expectedReturn}
             onChange={handleInputChange}
+            data-cy="input-expected-return"
           />
         </p>
 
@@ -56,6 +59,7 @@ export default function UserInput({
             name="duration"
             value={formData.duration}
             onChange={handleInputChange}
+            data-cy="input-duration"
           />
         </p>
       </div>
