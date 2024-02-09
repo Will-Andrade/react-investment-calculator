@@ -43,7 +43,9 @@ export default function App() {
       <Header />
       <UserInput formData={formData} handleInputChange={handleInputChange} />
       {!inputIsValid ? (
-        <p className="center">Please enter a duration greater than zero</p>
+        <p className="center" data-cy="results-error">
+          Please enter a duration greater than zero
+        </p>
       ) : (
         <InvestmentResults formData={formData} />
       )}
