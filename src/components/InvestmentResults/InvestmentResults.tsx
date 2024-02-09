@@ -16,7 +16,7 @@ export default function InvestmentResults({
     annualData[0].annualInvestment
 
   return (
-    <table className="result">
+    <table className="result" data-cy="results-table">
       <thead>
         <tr>
           <th>Year</th>
@@ -35,7 +35,7 @@ export default function InvestmentResults({
 
             return (
               <tr key={id}>
-                <td>{formatter.format(year)}</td>
+                <td>{year}</td>
                 <td>{formatter.format(valueEndOfYear)}</td>
                 <td>{formatter.format(interest)}</td>
                 <td>{formatter.format(totalInterest)}</td>
