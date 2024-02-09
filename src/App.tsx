@@ -1,20 +1,21 @@
 import { ChangeEvent, useState } from "react"
 import Header from "./components/Header/Header"
 import UserInput from "./components/UserInput/UserInput"
+import InvestmentResults from "./components/InvestmentResults/InvestmentResults"
 
 export type FormDataState = {
-  initialInvestment: string
-  annualInvestment: string
-  expectedReturn: string
-  duration: string
+  initialInvestment: number
+  annualInvestment: number
+  expectedReturn: number
+  duration: number
 }
 
 export default function App() {
   const [formData, setFormData] = useState<FormDataState>({
-    initialInvestment: "",
-    annualInvestment: "",
-    expectedReturn: "",
-    duration: "",
+    initialInvestment: 150,
+    annualInvestment: 350,
+    expectedReturn: 5.5,
+    duration: 6,
   })
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -34,10 +35,18 @@ export default function App() {
       [name]: Math.max(valueAsNumber, 0),
     }))
   }
+
+  const inputIsValid = formData.duration >= 1
+
   return (
     <>
       <Header />
       <UserInput formData={formData} handleInputChange={handleInputChange} />
+      {!inputIsValid ? (
+        <p className="center">Please enter a duration greater than zero</p>
+      ) : (
+        <InvestmentResults formData={formData} />
+      )}
     </>
   )
 }

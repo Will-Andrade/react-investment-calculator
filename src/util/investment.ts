@@ -17,6 +17,17 @@ export function calculateInvestmentResults({
   expectedReturn,
   duration,
 }: CalculateInvestmentResultsProps) {
+  const invalidInputData = [
+    initialInvestment,
+    annualInvestment,
+    expectedReturn,
+    duration,
+  ].some((value) => typeof value !== "number" || isNaN(value))
+
+  if (invalidInputData) {
+    throw new Error("All properties must be numbers.")
+  }
+
   const annualData = []
   let investmentValue = initialInvestment
 

@@ -17,7 +17,7 @@ it("should update the input value when a valid value is typed in", async () => {
   expect(input.value).toBe("200")
 })
 
-it("should not update the input value when an invalid value is typed in", async () => {
+it("should not accept a negative number when typed in", async () => {
   const user = userEvent.setup()
   render(<App />)
 
@@ -28,5 +28,5 @@ it("should not update the input value when an invalid value is typed in", async 
   await user.clear(input)
   await user.type(input, "-1")
 
-  expect(input.value).toBe("0")
+  expect(input.value).toBe("1")
 })
