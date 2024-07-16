@@ -7,9 +7,9 @@ it("should update the input value when a valid value is typed in", async () => {
   const user = userEvent.setup()
   render(<App />)
 
-  const input = await screen.findByRole("spinbutton", {
+  const input = (await screen.findByRole("spinbutton", {
     name: /initial investment/i,
-  })
+  })) as HTMLInputElement
 
   await user.clear(input)
   await user.type(input, "200")
@@ -21,9 +21,9 @@ it("should not accept a negative number when typed in", async () => {
   const user = userEvent.setup()
   render(<App />)
 
-  const input = await screen.findByRole("spinbutton", {
+  const input = (await screen.findByRole("spinbutton", {
     name: /expected return/i,
-  })
+  })) as HTMLInputElement
 
   await user.clear(input)
   await user.type(input, "-1")

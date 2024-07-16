@@ -8,7 +8,7 @@ it("should result in error if any of the expected values is a string", () => {
     duration: 2,
   }
 
-  const result = () => calculateInvestmentResults(invalidMockFormData)
+  const result = () => calculateInvestmentResults(invalidMockFormData as any)
 
   expect(result).toThrow(/All properties must be numbers./i)
 })
