@@ -77,19 +77,40 @@ Based on these values, a table containing the results of the operation is shown 
 
 ## Challenges Faced
 
-I ran into some problems related to using BDD and TDD on this project, since it was the first time I applied these concepts all by myself.
+~~I ran into some problems related to using BDD and TDD on this project, since it was the first time I applied these concepts all by myself.~~
 
-I had trouble fixing some issues related to my tests files. For example, on the `investmentResult.test.tsx` I ran into the error:
+~~I had trouble fixing some issues related to my tests files. For example, on the `investmentResult.test.tsx` I ran into the error:~~
 
 ![Initial App State](./git-imgs/errorExample.png)
 
-Even tough I installed and configured vitest to understand both assertions from jest and React Testing Library, as well as configuring the use of `js-dom`, I couldn't get rid of this error on all test files. At the end of the day, the tests work as expected but this is a weird bug that I coudln't fix while developing them.
+~~Even tough I installed and configured vitest to understand both assertions from jest and React Testing Library, as well as configuring the use of `js-dom`, I couldn't get rid of this error on all test files. At the end of the day, the tests work as expected but this is a weird bug that I coudln't fix while developing them.~~
 
-Finally, since I couldn't fix these errors on the test files, I couldn't properly host the project on Vercel. The build process fails due to them.
+~~Finally, since I couldn't fix these errors on the test files, I couldn't properly host the project on Vercel. The build process fails due to them.~~
+
+### UPDATE
+
+I managed to fix the issues related to the test suites and build process with [PR #7](https://github.com/Will-Andrade/react-investment-calculator/pull/7). Apparently, what was causing the issues with the tests was a wrongful import inside the ```setupTests``` file. Instead of importing this:
+```ts
+import "@testing-library/jest-dom/vitest"
+```
+
+I should have been importing this:
+```ts
+import "@testing-library/jest-dom"
+```
+
+Plus, I had an unused function inside the ```cypress.config``` file that needed to be deleted:
+```ts
+...
+setupNodeEvents(on, config) {
+  // implement node event listeners here
+},
+...
+```
 
 ## Next steps
 
-First: Fix these errors related to the tests and make sure the build process is executed successfully on Vercel so I can host the project on the cloud and update the repository with the URL to it.
+~~First: Fix these errors related to the tests and make sure the build process is executed successfully on Vercel so I can host the project on the cloud and update the repository with the URL to it.~~
 
 Second: Make better tests. I plan to continue creating projects with TDD, BDD and the testing knowledge I have right now. In time, I will be updating this project with new found knowledge and practices.
 
